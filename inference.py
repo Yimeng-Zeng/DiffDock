@@ -67,7 +67,7 @@ if args.confidence_model_dir is not None:
     with open(f'{args.confidence_model_dir}/model_parameters.yml') as f:
         confidence_args = Namespace(**yaml.full_load(f))
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda')
 
 if args.protein_ligand_csv is not None:
     df = pd.read_csv(args.protein_ligand_csv)
