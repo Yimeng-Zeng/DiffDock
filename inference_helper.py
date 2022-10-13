@@ -47,3 +47,6 @@ os.system(f'python datasets/esm_embedding_preparation.py --protein_path {args.pr
 os.system(f"HOME=esm/model_weights python esm/scripts/extract.py esm2_t33_650M_UR50D data/prepared_for_esm.fasta data/esm2_output --repr_layers 33 --include per_tok")
 #print(f"python -m inference --protein_path {args.protein_path} --ligand '{args.ligand}' --out_dir results/user_predictions_small --inference_steps 20 --samples_per_complex 10 --batch_size 10")
 os.system(f"python -m inference --protein_path {args.protein_path} --ligand '{args.ligand}' --out_dir results/user_predictions_small --inference_steps 20 --samples_per_complex {args.samples_per_complex} --batch_size 10")
+
+import numpy as np
+print(np.amax(np.load('results/user_predictions_small/confidences.npy')))
